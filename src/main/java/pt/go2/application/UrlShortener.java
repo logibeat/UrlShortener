@@ -70,20 +70,20 @@ public class UrlShortener {
             Builder staticPagesBuilder = new EmbeddedPages.Builder();
 
             // single HTML page
-            staticPagesBuilder.add("/index.html", MimeTypeConstants.MIME_TEXT_HTML);
+            staticPagesBuilder.add("/src/webapp/WEB-INF/static/index.html", MimeTypeConstants.MIME_TEXT_HTML);
 
             // javascript ( handles ajax )
-            staticPagesBuilder.add("/ajax.js", MimeTypeConstants.MIME_APP_JAVASCRIPT);
+            staticPagesBuilder.add("/src/webapp/WEB-INF/static/ajax.js", MimeTypeConstants.MIME_APP_JAVASCRIPT);
 
             // page style
-            staticPagesBuilder.add("/screen.css", MimeTypeConstants.MIME_TEXT_CSS);
+            staticPagesBuilder.add("/src/webapp/WEB-INF/static/screen.css", MimeTypeConstants.MIME_TEXT_CSS);
 
             // search engine stuff
-            staticPagesBuilder.add("/robots.txt", MimeTypeConstants.MIME_TEXT_PLAIN);
-            staticPagesBuilder.add("/sitemap.xml", MimeTypeConstants.MIME_TEXT_XML);
+            staticPagesBuilder.add("/src/webapp/WEB-INF/static/robots.txt", MimeTypeConstants.MIME_TEXT_PLAIN);
+            staticPagesBuilder.add("/src/webapp/WEB-INF/static/sitemap.xml", MimeTypeConstants.MIME_TEXT_XML);
 
             // root must be redirected to index
-            staticPagesBuilder.setAlias("/", "/index.html");
+            staticPagesBuilder.setAlias("/", "/src/webapp/WEB-INF/static/index.html");
 
             // create entry required by
             // https://www.google.com/webmasters/tools/home?hl=en

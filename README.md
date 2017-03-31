@@ -1,24 +1,16 @@
-[![Build Status](https://travis-ci.org/vilaca/UrlShortener.svg?branch=master)](https://travis-ci.org/vilaca/UrlShortener)
-
-
-UrlShortener
+Url Shortener
 ============
 
-URL Shortener - Pure Java SE Web Application with embedded Jetty 9 Http server.
-
-Use java -server -jar UrlShortener.jar to run.
-
-Try it on-line at [http://go2.pt/](http://go2.pt/) or download the [latest version jar](http://vilaca.eu/Download/UrlShortener.jar).
-
+URL Shortener - Java EE Web Application.
 
 Features
 ========
 
-- Single Jar Application;
-- No Application server, Servelet Container or External Database dependencies;
+- Single War Application;
+- Run on Tomcat above 8.0;
 - Refuses abusive Phishing and Malware Urls;
 - Actively scans short Urls to identify possible threats;
-- Apache style logging for compatibility with existing tools;
+- Slf4j style;
 - Integration with Google Webmaster tools, Safebrowsing API and PhishTank API;
 - Configurable status redirects;
 - Light footprint, can run on very constrained systems.
@@ -56,7 +48,7 @@ Apache Commons Validator 1.4.0 - http://commons.apache.org/proper/commons-valida
 
 Log4j2 - http://logging.apache.org/log4j/2.x/
 
-Jetty 9 - http://www.eclipse.org/jetty/
+Tomcat 8 - http://tomcat.apache.org/
 
 License
 =======

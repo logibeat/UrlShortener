@@ -33,11 +33,11 @@ import org.eclipse.jetty.http.HttpStatus;
  */
 enum ErrorPages implements Response {
 
-    PAGE_NOT_FOUND(Response.readFile("/404.html"), HttpStatus.NOT_FOUND_404, MimeTypeConstants.MIME_TEXT_HTML),
+    PAGE_NOT_FOUND(Response.readFile("/src/webapp/WEB-INF/static/404.html"), HttpStatus.NOT_FOUND_404, MimeTypeConstants.MIME_TEXT_HTML),
     
     // this error should be returned when an URL was detected as being a
     // phishing site **after** it was added to the database
-    PHISHING(Response.readFile("/403-phishing.html"), HttpStatus.FORBIDDEN_403, MimeTypeConstants.MIME_TEXT_HTML),
+    PHISHING(Response.readFile("/src/webapp/WEB-INF/static/403-phishing.html"), HttpStatus.FORBIDDEN_403, MimeTypeConstants.MIME_TEXT_HTML),
     
     // this error should be returned when an URL was detected as being a
     // phishing site **before** it was added to the database
@@ -45,7 +45,7 @@ enum ErrorPages implements Response {
     
     // this error should be returned when an URL was detected as being a malware
     // site **after** it was added to the database
-    MALWARE(Response.readFile("/403-malware.html"), HttpStatus.FORBIDDEN_403, MimeTypeConstants.MIME_TEXT_HTML), 
+    MALWARE(Response.readFile("/src/webapp/WEB-INF/static/403-malware.html"), HttpStatus.FORBIDDEN_403, MimeTypeConstants.MIME_TEXT_HTML),
     
     // this error should be returned when an URL was detected as being a
     // phishing site **before** it was added to the database

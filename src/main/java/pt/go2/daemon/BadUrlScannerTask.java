@@ -17,15 +17,14 @@
 */
 package pt.go2.daemon;
 
-import java.util.Collection;
-import java.util.Date;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import pt.go2.external.UrlHealth;
 import pt.go2.storage.KeyValueStore;
 import pt.go2.storage.Uri;
+
+import java.util.Collection;
+import java.util.Date;
 
 public class BadUrlScannerTask implements WatchDogTask {
 
@@ -45,9 +44,8 @@ public class BadUrlScannerTask implements WatchDogTask {
     /**
      * Factory method - only creates instance if api-key is in configuration
      *
+     * @param ks
      * @param ul
-     *
-     * @param config
      * @return
      */
     public BadUrlScannerTask(KeyValueStore ks, UrlHealth ul) {
@@ -55,7 +53,6 @@ public class BadUrlScannerTask implements WatchDogTask {
         this.ul = ul;
     }
 
-    @Override
     public synchronized void refresh() {
 
         final Collection<Uri> uris = ks.uris();
@@ -67,17 +64,14 @@ public class BadUrlScannerTask implements WatchDogTask {
         lastRun = new Date();
     }
 
-    @Override
     public Date lastRun() {
         return lastRun == null ? null : new Date(lastRun.getTime());
     }
 
-    @Override
     public long interval() {
         return UPDATE_INTERVAL;
     }
 
-    @Override
     public String name() {
         return "Bad Url Scanner";
     }

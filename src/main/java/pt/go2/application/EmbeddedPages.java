@@ -18,6 +18,7 @@
 package pt.go2.application;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Collections;
@@ -25,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.zip.GZIPOutputStream;
 
+import org.apache.commons.io.IOUtils;
 import org.eclipse.jetty.http.HttpStatus;
 
 /**
@@ -65,8 +67,7 @@ final class EmbeddedPages {
         final Map<String, Response> files;
 
         public Builder() {
-
-            files = new HashMap<>();
+            files = new HashMap();
         }
 
         /**
@@ -81,7 +82,7 @@ final class EmbeddedPages {
          */
         public Builder add(String filename, MimeTypeConstants mime) throws IOException, URISyntaxException {
 
-            final byte[] content = Response.readFile(filename);
+            final byte[] content = IOUtils.toByteArray(new FileReader(filename));
             final byte[] zipped = compress(content);
 
             final Response response = ResponseFactory.create(HttpStatus.OK_200, mime, zipped, content);
@@ -148,7 +149,6 @@ final class EmbeddedPages {
             final ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
             try (final GZIPOutputStream zip = new GZIPOutputStream(baos);) {
-
                 zip.write(content);
                 zip.flush();
                 zip.close();
